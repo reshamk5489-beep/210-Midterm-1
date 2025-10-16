@@ -29,6 +29,24 @@ class DoublyLinkedList
     Node * head;
     Node * tail;
 
+    void every_other_element()
+    {
+        Node * current = head;
+        if (!current) 
+        {
+            cout << "List is empty." << endl;
+            return;
+        }
+
+        while (current) 
+        {
+            cout << current -> data << " ";
+            current = current -> next;
+        }
+
+        cout << endl;
+    }
+
     // Comment #2: Public constructor to initialize the private members.
     public: DoublyLinkedList() 
     {
@@ -48,17 +66,19 @@ class DoublyLinkedList
         // Comment #2: Create a node initialzed with the given value.
         Node * newNode = new Node(value);
 
-        // Comment #2: If the head is null, that means the list is empty. 
+        // Comment #2: If the head is null, that means the list is empty. Hence, set both head and tail pointers to the new node.
         if (!head) 
         {
             head = tail = newNode;
             return;
         }
 
+        // Comment #2: Since list is not empty, search for position.
         Node * temp = head;
         for (int i = 0; i < position && temp; ++i)
             temp = temp -> next;
 
+        // Comment #2: If position exceeds list size, delete new node and do not insert.
         if (!temp) 
         {
             cout << "Position exceeds list size. Node not inserted.\n";
@@ -66,6 +86,7 @@ class DoublyLinkedList
             return;
         }
 
+        // Comment #2: Found the position and insert the Node there.
         newNode -> next = temp -> next;
         newNode -> prev = temp;
         if (temp -> next)
