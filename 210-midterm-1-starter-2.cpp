@@ -193,11 +193,14 @@ class DoublyLinkedList
 
     void push_front(int v) 
     {
+        // Comment #2: Create a node.
         Node * newNode = new Node(v);
+        // Comment #2: If the list is empty, then set head and tail both to the new Node.
         if (!head)
             head = tail = newNode;
         else 
         {
+            // Comment #2: Otherwise, add new Node to the front of the list.
             newNode -> next = head;
             head -> prev = newNode;
             head = newNode;
@@ -206,19 +209,23 @@ class DoublyLinkedList
 
     void pop_front() 
     {
+        // Comment #2: If the list is empty, then exit without removing node from the front.
         if (!head) 
         {
             cout << "List is empty." << endl;
             return;
         }
 
+        // Comment #2: List is not empty.
         Node * temp = head;
         if (head -> next) 
         {
+            // Comment #2: Delete the node from the front.
             head = head -> next;
             head -> prev = nullptr;
         } 
         else
+        // Comment #2: Delete the node from the front and set head and tail to nullptr.
             head = tail = nullptr;
 
         delete temp;
@@ -226,23 +233,28 @@ class DoublyLinkedList
 
     void pop_back() 
     {
+        // Comment #2: If the list is empty, then exit without deleting any node from the back.
         if (!tail) 
         {
             cout << "List is empty." << endl;
             return;
         }
+        // Comment #2: List is not empty.
         Node * temp = tail;
         if (tail -> prev) 
         {
+            // Comment #2: Delete the last node.
             tail = tail -> prev;
             tail -> next = nullptr;
         } 
         else
+            // Comment #2: Delete the last node and set head and tail to nullptr.
             head = tail = nullptr;
 
         delete temp;
     }
     
+    // Comment #2: Define a destructor to delete the doubly linked list.
     ~DoublyLinkedList() 
     {
         while (head) 
@@ -253,6 +265,7 @@ class DoublyLinkedList
         }
     }
 
+    // Comment #2: Print the value of each node in the list.
     void print() 
     {
         Node * current = head;
@@ -271,6 +284,7 @@ class DoublyLinkedList
         cout << endl;
     }
 
+    // Comment #2: Print the value of each node in the list in the reverse order.
     void print_reverse() 
     {
         Node * current = tail;
