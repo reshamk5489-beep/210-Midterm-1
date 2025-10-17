@@ -40,15 +40,19 @@ class DoublyLinkedList
             return;
         }
 
-        cout << "List is not empty" << endl;
+        // cout << "List is not empty" << endl;
 
         while (current) 
         {
-            cout << "Current value: " << current -> data << endl;
-            if (toggle == true)
+            // cout << "Current value: " << current -> data << endl;
+            if (toggle == false)
             {
                 // Comment #5: Print value of the alternate node (first, third, fifth, and ...).
                 cout << current -> data << " ";
+                toggle = true;
+            }
+            else 
+            {
                 toggle = false;
             }
 
@@ -227,16 +231,16 @@ class DoublyLinkedList
             return;
         }
 
-        // Comment #2: List is not empty.
+        // Comment #32: List is not empty.
         Node * temp = head;
         if (head -> next) 
         {
-            // Comment #2: Delete the node from the front.
+            // Comment #33: Delete the node from the front.
             head = head -> next;
             head -> prev = nullptr;
         } 
         else
-        // Comment #2: Delete the node from the front and set head and tail to nullptr.
+        // Comment #34: Delete the node from the front and set head and tail to nullptr.
             head = tail = nullptr;
 
         delete temp;
@@ -244,28 +248,28 @@ class DoublyLinkedList
 
     void pop_back() 
     {
-        // Comment #2: If the list is empty, then exit without deleting any node from the back.
+        // Comment #35: If the list is empty, then exit without deleting any node from the back.
         if (!tail) 
         {
             cout << "List is empty." << endl;
             return;
         }
-        // Comment #2: List is not empty.
+        // Comment #36: List is not empty.
         Node * temp = tail;
         if (tail -> prev) 
         {
-            // Comment #2: Delete the last node.
+            // Comment #37: Delete the last node.
             tail = tail -> prev;
             tail -> next = nullptr;
         } 
         else
-            // Comment #2: Delete the last node and set head and tail to nullptr.
+            // Comment #38: Delete the last node and set head and tail to nullptr.
             head = tail = nullptr;
 
         delete temp;
     }
     
-    // Comment #2: Define a destructor to delete the doubly linked list.
+    // Comment #39: Define a destructor to delete the doubly linked list.
     ~DoublyLinkedList() 
     {
         while (head) 
@@ -276,7 +280,7 @@ class DoublyLinkedList
         }
     }
 
-    // Comment #2: Print the value of each node in the list.
+    // Comment #40: Print the value of each node in the list.
     void print() 
     {
         Node * current = head;
@@ -295,7 +299,7 @@ class DoublyLinkedList
         cout << endl;
     }
 
-    // Comment #2: Print the value of each node in the list in the reverse order.
+    // Comment #41: Print the value of each node in the list in the reverse order.
     void print_reverse() 
     {
         Node * current = tail;
@@ -320,20 +324,24 @@ int main()
     cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS; // dummy statement to avoid compiler warning
     DoublyLinkedList list;
 
-    // Comment #: Create linked list.
     cout << endl << "------------------" << endl;
-
+    
+    // Comment #42: Create linked list.
     list.push_back(10);
     list.push_back(11);
     list.push_back(12);
     list.push_back(13);
     list.push_back(14);
     list.push_back(15);
-    
-    // Comment #; Print linked list.
+    list.push_back(16);
+    list.push_back(17);
+    list.push_back(18);
+    list.push_back(19);
+
+    // Comment #43; Print linked list.
     list.print();
 
-    // Comment #: Print linked list with alternate node value.
+    // Comment #44: Print linked list with alternate node value.
     list.every_other_element();
 
     return 0; 
