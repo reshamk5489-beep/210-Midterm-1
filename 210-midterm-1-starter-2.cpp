@@ -92,6 +92,7 @@ class DoublyLinkedList
         if (temp -> next)
             temp -> next -> prev = newNode;
         else
+            // Comment #2: If temp is the last node, then make new Node as the last by setting tail pointer to it.
             tail = newNode;
 
         temp -> next = newNode;
@@ -99,12 +100,18 @@ class DoublyLinkedList
 
     void delete_val(int value) 
     {
+        // Comment #2: If list is empty then exit without deleting any Node.
         if (!head) return;
 
+        // Comment #2: The list is not empty, so search for matching value in the lsit.
         Node * temp = head;
         while (temp && temp -> data != value)
             temp = temp -> next;
+
+        // Comment #2: If node with matching value not found, then return without deleting any node.
         if (!temp) return;
+
+        // Comment #2: If node found, then delete the node either from the front, middle, or back.
         if (temp -> prev)
             temp -> prev -> next = temp -> next;
         else
@@ -118,21 +125,25 @@ class DoublyLinkedList
 
     void delete_pos(int pos) 
     {
+        // Comment #2: If list is empty, then exit without deleting node by position.
         if (!head) 
         {
             cout << "List is empty." << endl;
             return;
         }
 
+        // Comment #2: If position is 1, then delete the node from the front.
         if (pos == 1) 
         {
             pop_front();
             return;
         }
 
+        // Comment #2: Checking whether to delete from the middle or end.
         Node * temp = head;
         for (int i = 1; i < pos; i++) 
         {
+            // Comment #2: If position dooes nto exist, then exit without deleting any node.
             if (!temp) 
             {
                 cout << "Position doesn't exist." << endl;
@@ -148,12 +159,15 @@ class DoublyLinkedList
             return;
         }
 
+        // Comment #2: Position found, so check whether it is the last node or not.
         if (!temp -> next) 
         {
+            // Comment #2: Delete last node.
             pop_back();
             return;
         }
 
+        // Comment #2: Delete the middle node (it is not the front or the last).
         Node * tempPrev = temp -> prev;
         tempPrev -> next = temp -> next;
         temp -> next -> prev = tempPrev;
@@ -163,11 +177,14 @@ class DoublyLinkedList
 
     void push_back(int v) 
     {
+        // Comment #2: Create a node.
         Node * newNode = new Node(v);
+        // Comment #2: If the list is empty, then set head and tail both to the new Node.
         if (!tail)
             head = tail = newNode;
         else 
         {
+            // Comment #2: Otherwise, add new Node to the end of the list.
             tail -> next = newNode;
             newNode -> prev = tail;
             tail = newNode;
