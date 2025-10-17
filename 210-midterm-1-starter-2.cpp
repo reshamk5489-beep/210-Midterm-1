@@ -31,6 +31,7 @@ class DoublyLinkedList
 
     void every_other_element()
     {
+        bool toggle = false;
         Node * current = head;
         if (!current) 
         {
@@ -40,8 +41,13 @@ class DoublyLinkedList
 
         while (current) 
         {
-            cout << current -> data << " ";
-            current = current -> next;
+            if (toggle == true)
+            {
+                // Comment #: Print value of the alternate node (first, third, fifth, and ...).
+                cout << current -> data << " ";
+                current = current -> next;
+                toggle = false;
+            }
         }
 
         cout << endl;
@@ -307,6 +313,21 @@ class DoublyLinkedList
 int main() 
 {
     cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS; // dummy statement to avoid compiler warning
+    DoublyLinkedList list;
+
+    // Comment #: Create linked list.
+    list.push_front(10);
+    list.push_front(11);
+    list.push_front(12);
+    list.push_front(13);
+    list.push_front(14);
+    list.push_front(15);
+    
+    // Comment #; Print linked list.
+    list.print();
+
+    // Comment #: Print linked list with alternate node value.
+    list.every_other_element();
 
     return 0; 
 }
